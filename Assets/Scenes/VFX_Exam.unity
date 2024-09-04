@@ -10739,6 +10739,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 8177416948924160370, guid: cae6c512b2079134dbc45042810ed384,
     type: 3}
+  poolSize: 2
   delay: 1
   power: 20
 --- !u!1 &1292441195

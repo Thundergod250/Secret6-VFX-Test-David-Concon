@@ -8,16 +8,17 @@ public class DisableVfx : MonoBehaviour
 
     private void OnEnable()
     {
-        Invoke(nameof(DisableObject), lifetime);
+        StartCoroutine(DisableAfterLifetime());
     }
 
     private void OnDisable()
     {
-        CancelInvoke(); 
+        StopAllCoroutines();
     }
 
-    private void DisableObject()
+    private IEnumerator DisableAfterLifetime()
     {
+        yield return new WaitForSeconds(lifetime);
         gameObject.SetActive(false);
     }
 }

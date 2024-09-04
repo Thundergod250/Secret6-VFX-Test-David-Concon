@@ -30,22 +30,28 @@ public class AnimationManager : MonoBehaviour
         animatorA.SetTrigger("idle");
         animatorB.SetTrigger("idle");
 
-        InvokeRepeating("TriggerFireProjectile", delay, interval);
+        StartCoroutine(TriggerFireProjectileRepeatedly());
     }
 
-    private void TriggerFireProjectile()
+    private IEnumerator TriggerFireProjectileRepeatedly()
     {
-        animatorB.SetTrigger("fireProjectile");
+        yield return new WaitForSeconds(delay);
+        while (true)
+        {
+            animatorB.SetTrigger("fireProjectile");
+            yield return new WaitForSeconds(interval);
+        }
     }
 
     public void TriggerKnockback()
     {
         animatorA.SetTrigger("attacked");
-        Invoke(nameof(SetUnitABackToIdle), 1.5f); 
+        StartCoroutine(SetUnitABackToIdle());
     }
 
-    private void SetUnitABackToIdle()
+    private IEnumerator SetUnitABackToIdle()
     {
+        yield return new WaitForSeconds(1.5f);
         animatorA.SetTrigger("idle");
     }
 }

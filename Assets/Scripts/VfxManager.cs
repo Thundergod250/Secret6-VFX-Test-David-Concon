@@ -13,7 +13,8 @@ public class VfxManager : MonoBehaviour
 
     public static VfxManager Instance { get; private set; }
 
-    public List<VisualEffect> visualEffects; 
+    public List<VisualEffect> visualEffects;
+    public List<ParticleSystem> persistentEffects; 
 
     private void Awake()
     {
@@ -47,6 +48,33 @@ public class VfxManager : MonoBehaviour
     public void DisableChannellingVfx()
     {
         Invoke(nameof(InvokeDisableChannellingVfx), 1f);
+    }
+
+    public void PlayPersistentVfx()
+    {
+        foreach (ParticleSystem particle in persistentEffects)
+        {
+            particle.Play();
+        }
+    }
+
+    public void StopPersistentVfx()
+    {
+        foreach (ParticleSystem particle in persistentEffects)
+        {
+            particle.Stop();
+        }
+    }
+
+    public void StopPersistentAfterSomeTime()
+    {
+        StartCoroutine(DisablePersistentVfx());
+    }
+
+    private IEnumerator DisablePersistentVfx()
+    {
+        yield return new WaitForSeconds(2f);
+        StopPersistentVfx(); 
     }
 
     private void InvokeDisableChannellingVfx()
