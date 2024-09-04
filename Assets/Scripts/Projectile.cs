@@ -21,7 +21,6 @@ public class Projectile : MonoBehaviour
         {
             VfxManager.Instance.SetEffectState(0, true);
             VfxManager.Instance.SetEffectState(1, true);
-            VfxManager.Instance.PlayPersistentVfx(); 
             TriggerReactionAnimation();
 
             projectileHead.Stop();

@@ -50,7 +50,6 @@ public class ProjectileSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         SpawnProjectile();
-        //VfxManager.Instance.StopPersistentVfx(); 
     }
 
     public void SpawnProjectile()

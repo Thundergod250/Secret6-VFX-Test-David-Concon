@@ -44,6 +44,11 @@ public class VfxManager : MonoBehaviour
         {
             visualEffects[index].effect.SetActive(state);
         }
+
+        if (index == 0)
+        {
+            PlayPersistentVfx(); 
+        }
     }
 
     public void DisableChannellingVfx()
