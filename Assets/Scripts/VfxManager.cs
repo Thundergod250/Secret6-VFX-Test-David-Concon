@@ -13,7 +13,8 @@ public class VfxManager : MonoBehaviour
 
     public static VfxManager Instance { get; private set; }
 
-    public float persistentDuration = 1.0f; 
+    public float persistentDuration = 1.0f;
+    public float nonPersistentLifetime = 2.5f;
     public List<VisualEffect> visualEffects;
     public List<ParticleSystem> persistentEffects; 
 
@@ -49,6 +50,11 @@ public class VfxManager : MonoBehaviour
         {
             PlayPersistentVfx(); 
         }
+
+        if (index == 1 && state)
+        {
+            StartCoroutine(DisableAfterLifetime());
+        }
     }
 
     public void DisableChannellingVfx()
@@ -76,6 +82,12 @@ public class VfxManager : MonoBehaviour
     public void StopPersistentAfterSomeTime()
     {
         StartCoroutine(DisablePersistentVfx());
+    }
+
+    private IEnumerator DisableAfterLifetime()
+    {
+        yield return new WaitForSeconds(nonPersistentLifetime);
+        visualEffects[1].effect.SetActive(false);
     }
 
     private IEnumerator DisablePersistentVfx()

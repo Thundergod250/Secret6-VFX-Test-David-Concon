@@ -15806,6 +15806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   persistentDuration: 2.5
+  nonPersistentLifetime: 2.5
   visualEffects:
   - effect: {fileID: 948275038}
     initialState: 0
