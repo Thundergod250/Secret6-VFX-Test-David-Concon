@@ -13,6 +13,7 @@ public class VfxManager : MonoBehaviour
 
     public static VfxManager Instance { get; private set; }
 
+    public float persistentDuration = 1.0f; 
     public List<VisualEffect> visualEffects;
     public List<ParticleSystem> persistentEffects; 
 
@@ -56,6 +57,7 @@ public class VfxManager : MonoBehaviour
         {
             particle.Play();
         }
+        StopPersistentAfterSomeTime();
     }
 
     public void StopPersistentVfx()
@@ -73,7 +75,7 @@ public class VfxManager : MonoBehaviour
 
     private IEnumerator DisablePersistentVfx()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(persistentDuration);
         StopPersistentVfx(); 
     }
 
