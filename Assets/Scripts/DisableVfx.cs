@@ -18,7 +18,6 @@ public class DisableVfx : MonoBehaviour
 
     private void DisableObject()
     {
-        Debug.LogError("DISABLED"); 
         gameObject.SetActive(false);
     }
 }

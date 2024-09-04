@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public GameObject vfx;
+    /*public GameObject vfxPersistent;
+    public GameObject vfxToggle;
 
     private void Start()
     {
-        vfx.SetActive(false);
+        vfxPersistent.SetActive(false);
+        vfxToggle.SetActive(false);
     }
 
     public void EnableVFX()
     {
-        vfx.SetActive(true);
-    }
+        vfxPersistent.SetActive(true);
+        vfxToggle.SetActive(true);
+    }*/
 }

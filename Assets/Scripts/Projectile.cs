@@ -15,8 +15,15 @@ public class Projectile : MonoBehaviour
     {
         if (other.TryGetComponent(out Target target))
         {
-            target.EnableVFX();
+            VfxManager.Instance.SetEffectState(0, true);
+            VfxManager.Instance.SetEffectState(1, true);
+            TriggerReactionAnimation(); 
             Destroy(gameObject); 
         }
+    }
+
+    private void TriggerReactionAnimation()
+    {
+        AnimationManager.Instance.TriggerKnockback(); 
     }
 }
